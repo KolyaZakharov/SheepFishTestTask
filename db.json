@@ -1,0 +1,42 @@
+[
+    {
+        "model": "check_service.printer",
+        "pk": 1,
+        "fields": {
+            "name": "Printer1",
+            "api_key": "c4cc7242-109a-4d83-a2c5-2edc63f6b47b",
+            "check_type": "Client",
+            "point_id": 1
+        }
+    },
+    {
+        "model": "check_service.printer",
+        "pk": 2,
+        "fields": {
+            "name": "Printer2",
+            "api_key": "a5f8d7e2-86bf-4f4c-b6fd-7a9ecdb1d50d",
+            "check_type": "Client",
+            "point_id": 2
+        }
+    },
+    {
+        "model": "check_service.printer",
+        "pk": 3,
+        "fields": {
+            "name": "Printer3",
+            "api_key": "6e31f2ae-70cc-4e23-9a77-18b442cb7d27",
+            "check_type": "Kitchen",
+            "point_id": 3
+        }
+    },
+    {
+        "model": "check_service.printer",
+        "pk": 4,
+        "fields": {
+            "name": "Printer4",
+            "api_key": "f3e84562-3c02-497d-afab-6e978dbdc072",
+            "check_type": "Client",
+            "point_id": 4
+        }
+    }
+]

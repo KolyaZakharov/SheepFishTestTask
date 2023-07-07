@@ -1,0 +1,206 @@
+swagger: '2.0'
+info:
+  title: Snippets API
+  description: API for SheepFish
+  termsOfService: https://www.google.com/policies/terms/
+  contact:
+    email: contact@snippets.local
+  license:
+    name: BSD License
+  version: v1
+host: 127.0.0.1:8000
+schemes:
+  - http
+basePath: /api/check
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /checks/:
+    get:
+      operationId: checks_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Check'
+      tags:
+        - checks
+    post:
+      operationId: checks_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CheckCreate'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CheckCreate'
+      tags:
+        - checks
+    parameters: []
+  /checks/{id}/:
+    get:
+      operationId: checks_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Check'
+      tags:
+        - checks
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this check.
+        required: true
+        type: integer
+  /printers/:
+    get:
+      operationId: printers_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Printer'
+      tags:
+        - printers
+    post:
+      operationId: printers_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Printer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Printer'
+      tags:
+        - printers
+    parameters: []
+  /printers/{id}/:
+    get:
+      operationId: printers_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Printer'
+      tags:
+        - printers
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this printer.
+        required: true
+        type: integer
+definitions:
+  Check:
+    required:
+      - printer_id
+      - type
+      - order
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      printer_id:
+        title: Printer id
+        type: integer
+      type:
+        title: Type
+        type: string
+        enum:
+          - Client
+          - Kitchen
+      order:
+        title: Order
+        type: object
+      status:
+        title: Status
+        type: string
+        enum:
+          - new
+          - rendered
+          - printed
+        readOnly: true
+      pdf_file:
+        title: Pdf file
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
+  CheckCreate:
+    required:
+      - point_id
+      - type
+      - order
+    type: object
+    properties:
+      point_id:
+        title: Point id
+        type: integer
+      type:
+        title: Type
+        type: string
+        enum:
+          - Client
+          - Kitchen
+      order:
+        title: Order
+        type: object
+  Printer:
+    required:
+      - api_key
+      - check_type
+      - point_id
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      api_key:
+        title: Api key
+        type: string
+        maxLength: 255
+        minLength: 1
+      check_type:
+        title: Check type
+        type: string
+        enum:
+          - Client
+          - Kitchen
+      point_id:
+        title: Point id
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648

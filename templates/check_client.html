@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <h1>Check #{{ check.id }}</h1>
+  <h2>point_id: {{ check.printer_id.point_id }}</h2>
+  <h3>Order:</h3>
+  {% for good, count in check.order.items %}
+    <ul>
+      <li>{{ good }} x {{ count }}</li>
+    </ul>
+  {% endfor %}
+</body>
+</html>
