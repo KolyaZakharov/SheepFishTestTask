@@ -1,4 +1,4 @@
-### `git clone https://github.com/Kitazuka/SheepFish_test.git`
+### `git clone https://github.com/KolyaZakharov/SheepFishTestTask.git
 ###  `python -m venv venv`
 ### `venv\Scripts\activate # on Windows`
 ### `source venv/bin/activate # on macOS`
